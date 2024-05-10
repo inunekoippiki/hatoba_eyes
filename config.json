@@ -1,0 +1,50 @@
+{
+    "eyes": {
+        "right": {
+            "origin_x": 204.3561833858381,
+            "origin_y": 273.10900529980154,
+            "scale_width": 1.03,
+            "scale_height": 1,
+            "angle": 442
+        },
+        "left": {
+            "origin_x": 251.66349143160926,
+            "origin_y": 263.72004343013134,
+            "scale_width": 1.06,
+            "scale_height": 1,
+            "angle": 298
+        }
+    },
+    "irises": {
+        "right": {
+            "file_path": "./resource/tsugu_right.png",
+            "origin_x": 204.3561833858381,
+            "origin_y": 273.10900529980154,
+            "scale_width": 1.03,
+            "scale_height": 1,
+            "angle": 442
+        },
+        "left": {
+            "file_path": "./resource/tsugu_left.png",
+            "origin_x": 251.66349143160926,
+            "origin_y": 263.72004343013134,
+            "scale_width": 1.06,
+            "scale_height": 1,
+            "angle": 298
+        },
+        "eyes_set": {
+            "default": [
+                "./resource/tsugu_right.png",
+                "./resource/tsugu_left.png"
+            ],
+            "grgr": [
+                "./resource/tsugu_right_grgr.png",
+                "./resource/tsugu_left_grgr.png"
+            ],
+            "hart": [
+                "./resource/tsugu_right_hart.png",
+                "./resource/tsugu_left_hart.png"
+            ]
+        }
+    }
+}
