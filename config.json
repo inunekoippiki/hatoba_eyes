@@ -1,36 +1,36 @@
 {
     "eyes": {
         "right": {
-            "origin_x": 204.3561833858381,
-            "origin_y": 273.10900529980154,
+            "origin_x": 243.5826514263831,
+            "origin_y": 285.6055175224514,
             "scale_width": 1.03,
             "scale_height": 1,
-            "angle": 442
+            "angle": 438
         },
         "left": {
-            "origin_x": 251.66349143160926,
-            "origin_y": 263.72004343013134,
+            "origin_x": 239.34534330035933,
+            "origin_y": 233.75011304646392,
             "scale_width": 1.06,
             "scale_height": 1,
-            "angle": 298
+            "angle": 268
         }
     },
     "irises": {
         "right": {
             "file_path": "./resource/tsugu_right.png",
-            "origin_x": 204.3561833858381,
-            "origin_y": 273.10900529980154,
+            "origin_x": 243.5826514263831,
+            "origin_y": 285.6055175224514,
             "scale_width": 1.03,
             "scale_height": 1,
-            "angle": 442
+            "angle": 438
         },
         "left": {
             "file_path": "./resource/tsugu_left.png",
-            "origin_x": 251.66349143160926,
-            "origin_y": 263.72004343013134,
+            "origin_x": 239.34534330035933,
+            "origin_y": 233.75011304646392,
             "scale_width": 1.06,
             "scale_height": 1,
-            "angle": 298
+            "angle": 268
         },
         "eyes_set": {
             "default": [

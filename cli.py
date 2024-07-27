@@ -51,6 +51,17 @@ def command_adjustment(args):
                              headers={"Content-Type": "application/json"})
     print(response)
 
+def command_save(args):
+    url = aquire_url(args)
+    response = requests.post(f"{url}/save", data=json.dumps({}),
+                             headers={"Content-Type": "application/json"})
+    print(response)
+    
+def command_enable_irises_random_direction(args):
+    url = aquire_url(args)
+    response = requests.post(f"{url}/enable_irises_random_direction", data=json.dumps({"enable": args.enable}),
+                             headers={"Content-Type": "application/json"})
+    print(response)
 
 def aquire_url(args):
     return f"http://{args.host}:{args.port}"
@@ -105,6 +116,14 @@ parser_adjustment.add_argument("-ra", '--right_angle', default=0.0, type=float)
 parser_adjustment.set_defaults(handler=command_eye_direction)
 add_default_parser(parser_adjustment)
 
+parser_save = subparsers.add_parser('save')
+parser_save.set_defaults(handler=command_save)
+add_default_parser(parser_save)
+
+parser_enable_irises_random_direction = subparsers.add_parser('enable_irises_random_direction')
+parser_enable_irises_random_direction.add_argument("-e", '--enable', action='store_false')
+parser_enable_irises_random_direction.set_defaults(handler=command_save)
+add_default_parser(parser_enable_irises_random_direction)
 
 args = parser.parse_args()
 if hasattr(args, 'handler'):

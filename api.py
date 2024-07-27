@@ -2,7 +2,8 @@ from flask import Flask
 from flask import request
 from queue import Queue
 from event import (Event, EventAdjustment, EventEyeDirection,
-                   EventSynchronise, EventChangeEyeType, EventSave, EventBlink, EventEnableBlink)
+                   EventSynchronise, EventChangeEyeType, EventSave, EventBlink, EventEnableBlink,
+                   EventEnableIrisesRandomDirection)
 from typing import Optional
 PORT = 18000
 
@@ -136,6 +137,13 @@ def post_blink():
 def post_enable_blink():
     payload = request.json
     events.put(EventEnableBlink(payload.get("enable", True)))
+    response = "Success."
+    return response, 202
+
+@app.route('/enable_irises_random_direction', methods=['POST'])
+def post_enable_irises_random_direction():
+    payload = request.json
+    events.put(EventEnableIrisesRandomDirection(payload.get("enable", True), payload))
     response = "Success."
     return response, 202
 

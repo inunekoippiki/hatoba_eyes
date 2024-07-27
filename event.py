@@ -129,6 +129,38 @@ class EventUpload(Event):
     def exec(self, eyes: Eyes):
         eyes.eyelids.blink()
 
+class EventEnableIrisesRandomDirection(Event):
+    def __init__(self, enable: bool, kwargs:dict = {}) -> None:
+        self.enable = enable
+        self.kwargs = kwargs
+
+    def exec(self, eyes: Eyes):
+        motion = eyes.irises.random_direction_target_motion
+        eyes.irises.enable_random_eyes_direction = self.enable
+        
+        if "base_interval" in self.kwargs:
+            motion.base_interval = self.kwargs["base_interval"]
+        if "interval_range" in self.kwargs:
+            motion.interval_range = self.kwargs["interval_range"]
+            
+        if "rx_max" in self.kwargs:
+            motion.rx_max = self.kwargs["rx_max"]
+        if "rx_min" in self.kwargs:
+            motion.rx_min = self.kwargs["rx_min"]
+        if "ry_max" in self.kwargs:
+            motion.ry_max = self.kwargs["ry_max"]
+        if "ry_min" in self.kwargs:
+            motion.ry_min = self.kwargs["ry_min"]
+            
+        if "lx_max" in self.kwargs:
+            motion.lx_max = self.kwargs["lx_max"]
+        if "lx_min" in self.kwargs:
+            motion.lx_min = self.kwargs["lx_min"]
+        if "ly_max" in self.kwargs:
+            motion.ly_max = self.kwargs["ly_max"]
+        if "ly_min" in self.kwargs:
+            motion.ly_min = self.kwargs["ly_min"]
+
 
 def adjustment(eye: Eye, event: EventAdjustment.Param):
     eye.origin_x += event.change_x

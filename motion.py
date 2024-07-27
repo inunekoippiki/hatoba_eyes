@@ -126,6 +126,51 @@ class IrisDirectionTargetMotion(IrisMotion):
     def relative_position(self) -> tuple[float, float]:
         return (self.x, self.y)
 
+class IrisesRandomDirectionMotion(Motion):
+    def __init__(self) -> None:
+        super().__init__()
+
+        self.base_interval = 10.0
+        self.interval_range = 2.0
+        self.interval = self.decide_interval()
+        self.interval_count = 0.0
+
+        self.rx_max = 0.8
+        self.rx_min = -0.8
+        self.ry_max = 0.8
+        self.ry_min = -0.8
+        self.lx_max = 0.8
+        self.lx_min = -0.8
+        self.ly_max = 0.8
+        self.ly_min = -0.8
+        
+        self.rx = 0
+        self.ry = 0
+        self.lx = 0
+        self.ly = 0
+  
+    def decide_interval(self):
+        return self.base_interval + self.interval_range * random.random()
+    
+    def update(self, delta_time: float):
+        self.interval_count += delta_time
+        if self.interval_count >= self.interval:
+            self.interval_count = 0.0
+            self.blink = True
+            x = random.random()
+            y = random.random()
+            
+            self.rx = self.rx_min + (self.rx_max - self.rx_min) * x
+            self.ry = self.ry_min + (self.ry_max - self.ry_min) * y
+            self.lx = self.lx_min + (self.lx_max - self.lx_min) * x
+            self.ly = self.ly_min + (self.ly_max - self.ly_min) * y
+            
+            self.interval = self.decide_interval()
+
+    def relative_position(self) -> tuple[tuple[float, float],tuple[float, float]]:
+        return ((self.rx,self.ry),(self.lx,self.ly))
+
+
 
 T = TypeVar("T")
 

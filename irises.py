@@ -2,7 +2,7 @@ import tkinter as tk
 
 from typing import Optional
 from PIL import ImageTk, Image
-from motion import IrisDirectionMotion, IrisDirectionTargetMotion
+from motion import IrisDirectionMotion, IrisDirectionTargetMotion,IrisesRandomDirectionMotion
 import logging
 import pygame
 import json
@@ -22,7 +22,7 @@ class Iris:
         self.scale_width: float = 1
         self.scale_height: float = 1
         self.angle: float = 0
-
+        
         self.motion: Optional[IrisDirectionMotion] = IrisDirectionTargetMotion(
         )
 
@@ -134,9 +134,17 @@ class Irises:
         self.left: Iris
         self.eyes_set = EyesSet()
 
+        self.enable_random_eyes_direction = True
+        self.random_direction_target_motion = IrisesRandomDirectionMotion()
+        
     def update(self, delta_time: float):
         self.right.update(delta_time)
         self.left.update(delta_time)
+        if(self.enable_random_eyes_direction):
+            self.random_direction_target_motion.update(delta_time)
+            r,l = self.random_direction_target_motion.relative_position()
+            self.right.set_target(*r)
+            self.left.set_target(*l)
 
     def draw(self, canvas: tk.Canvas):
         self.right.draw(canvas)
